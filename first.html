@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+         /* .outer{
+            height: 1200px;
+            width:  100%;
+            background-color: red;
+        } */
+
+        #sm{
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            color: red;
+            font-size: 50px;
+            background-color: yellow;
+            border: 5px;
+            border-radius: 100px;
+            margin-left: 100px;
+            margin-right: 100px;
+            padding-top: 30px;
+            height: 150px;
+        }
+        #sm1{
+            text-align: center;
+            color: red;
+            font-size: 100px;
+        }
+        .container{
+            margin-top: 0%;
+            position: absolute;
+            height: 1200px;
+            width:  100%;
+            background-color: yellowgreen;
+        }
+       
+    </style>
+</head>
+<body onload="clock()">
+    <div class="outer">
+    <div class="container">
+    <h1 id="sm1">Digital Watch</h1>
+    <p id="sm"></p>
+    <h3><i id="dat"></i></h3>
+    </div>
+    </div>
+</body>
+<script>
+    function clock(){
+        var d = new Date();
+        var h=d.getHours();
+        var m = d.getMinutes();
+        var s = d.getSeconds();
+        var da = d.getDate();
+        var mon = d.getMonth();
+        var year = d.getFullYear();
+        var day = d.getUTCDay();
+        // var timeZone=d.getTimezoneOffset();
+        mon=mon+1;
+        var ses = "PM";
+        if(h>12){
+            h=h-12;
+        }
+        if(h>=12){
+            ses="AM";
+        }
+        h=h<10 ? "0"+h : h;
+        m=m<10 ? "0"+m : m;
+        s=s<10 ? "0"+s : s;
+
+        var time = h+" : "+m+" : "+s+" "+ses;
+        var date = da+"/"+mon+"/"+year+"  ("+day+")  ";
+        document.getElementById('sm').innerHTML="<b>"+time+"</b>"+"</br><i style='color:black; padding:-top:20px; font-size:30px;'>"+date+"</i>";
+        // document.getElementById('dat').innerText=;
+        setTimeout(clock,1000);
+    }
+    
+</script>
+</html>
